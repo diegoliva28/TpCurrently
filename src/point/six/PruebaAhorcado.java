@@ -10,11 +10,10 @@ public class PruebaAhorcado {
 		Player p2 = new Player("Tesla", "alejandra");
 		Ahorcado game = new Ahorcado(p1, p2);
 		
-		int turno=game.getJUGADORQUEINICIALAPARTIDA();
-		int idAdversario=0;
 		
+		int idAdversario;
 		do {
-			idAdversario=game.obtenerAdversario(turno);
+			idAdversario=game.getTurno();
 			String palabraOculta=game.mostrarPalabraAdversario(idAdversario);
 			System.out.println(palabraOculta);
 			EnumAhorcado opcionElegida = obtenerOpcion(key);
@@ -23,17 +22,19 @@ public class PruebaAhorcado {
 			case INGRESAR_LETRA: 
 				System.out.println("Ingresa una letra");
 				char intento=key.next().charAt(0);
-				game.insertarLetra(intento, turno);
+				game.insertarLetra(intento, idAdversario);
 				break;
 			case ARRIESGAR: 
 				System.out.println("Ingresa una palabra");
-				String palabra=key.next();
-				game.arriegar(palabra, turno);				
+				String palabra=key.next();			
+				game.arriegar(palabra, idAdversario);				
 				break;
 			}
 			game.verificarGanador(idAdversario);
-			turno=game.turnoDelSiguienteJugador();
+			game.turnoDelSiguienteJugador();
 		} while (!game.seTerminoLaPartida());
+		
+		System.out.println(game.getGanador().getName());
 
 	}
 

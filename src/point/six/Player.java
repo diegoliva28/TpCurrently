@@ -15,7 +15,7 @@ public class Player {
 		this.name=nombre;
 		this.palabra=palabraElegida;
 		this.palabraOculta=getOcultarPalabra(palabraElegida);
-		this.lifes=6;
+		this.lifes=1;
 	}
 
 	private char[] getOcultarPalabra(String palabraElegida) {
