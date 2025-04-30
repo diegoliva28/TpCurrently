@@ -90,13 +90,40 @@ public class Ahorcado {
 					seEncontro=true;
 				}			
 			}
-			
 			if(seEncontro) {
 				p2.setPalabraOculta(palabraJugador);
 			}else {
 				p2.loseLife();
 			}			
 		}
+	}
+
+	public void verificarGanador(int id_oponente) {
+		boolean seEncontro=false;
+		int i=0;
+		if(id_oponente==p1.getId()) {
+			char[] palabraJugador=p1.getPalabraOculta();
+			while(i<palabraJugador.length && !seEncontro) {
+				if(palabraJugador[i]=='-') {
+					seEncontro=true;
+				}else {
+					p1.setLifes(0);
+				}
+				i++;
+			}
+		}
+		if(id_oponente==p2.getId()) {
+			char[] palabraJugador=p2.getPalabraOculta();
+			while(i<palabraJugador.length && !seEncontro) {
+				if(palabraJugador[i]=='-') {
+					seEncontro=true;
+				}else {
+					p2.setLifes(0);
+				}
+				i++;
+			}
+		}
+		
 	}
 
 	public boolean seTerminoLaPartida() {
@@ -111,6 +138,21 @@ public class Ahorcado {
 		}
 		
 		return seTermino;
+	}
+
+	public int obtenerAdversario(int turno) {
+		int id=0;
+		if(turno==p1.getId()) {
+			id=p2.getId();
+		}
+		if(turno==p2.getId()) {
+			id=p1.getId();
+		}
+		return id;
+	}
+
+	public void arriegar(String palabra, int turno) {
+		
 	}
 
 	
