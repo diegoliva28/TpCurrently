@@ -71,7 +71,7 @@ public class PruebaJean {
 				if(pantalones[j]!=null && pantalones[j+1]!=null) {
 					int comparacion=pantalones[j].getMarca().compareTo(pantalones[j+1].getMarca());
 //				if(comparacion<0) // De Z a A
-					if(comparacion<0) // De A a Z
+					if(comparacion>0) // De A a Z
 					{
 						Pantalon temp=pantalones[j];
 						pantalones[j]=pantalones[j+1];
