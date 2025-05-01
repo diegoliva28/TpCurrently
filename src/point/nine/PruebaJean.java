@@ -3,42 +3,84 @@ package point.nine;
 public class PruebaJean {
 
 	public static void main(String[] args) {
-	
-		Pantalon uno=new Pantalon(EnumMarca.ARMANI, 3, "celeste", 10);
-		Pantalon dos=new Pantalon(EnumMarca.LEVIS, 1, "rojo", 20);
-		Pantalon tres=new Pantalon(EnumMarca.TASCANI, 2, "amarrillo", 40);
-	
-		Pantalon [] pantalones=new Pantalon[3];
 
-		// Agregar pantalones
+		Pantalon uno = new Pantalon(EnumMarca.ARMANI, 3, "celeste", 10);
+		Pantalon dos = new Pantalon(EnumMarca.LEVIS, 1, "rojo", 20);
+		Pantalon tres = new Pantalon(EnumMarca.TASCANI, 2, "amarrillo", 40);
+
+		Pantalon[] pantalones = new Pantalon[3];
+
+//		System.out.println(EnumMarca.ARMANI.toString().compareTo(EnumMarca.TASCANI.toString()));
+//		System.out.println(EnumMarca.TASCANI.toString().compareTo(EnumMarca.ARMANI.toString()));
+//		COMPARETO
+//		Devuelve un
+//		-1 si es menor al elemento comparado
+//		0 si es igual
+//		1 si es mayor al elemento
+
+//		// Agregar pantalones
 		ingresarPantalon(uno, pantalones);
 		ingresarPantalon(dos, pantalones);
-		ingresarPantalon(tres, pantalones);		
-//		mostrarDetallePantalones(pantalones);
-		
-//		incremento(pantalones);
-//		mostrarDetallePantalones(pantalones);
-		
-		ordenarPorTalle(pantalones);
+		ingresarPantalon(tres, pantalones);
+		ordenarPorMarca2(pantalones);
 		mostrarDetallePantalones(pantalones);
-		ordenarPorColor(pantalones);
-		mostrarDetallePantalones(pantalones);
+//		
+////		incremento(pantalones);
+////		mostrarDetallePantalones(pantalones);
+//		
+//		ordenarPorTalle(pantalones);
+//		mostrarDetallePantalones(pantalones);
+//		ordenarPorColor(pantalones);
+//		mostrarDetallePantalones(pantalones);
 	}
 
 	private static void ordenarPorColor(Pantalon[] pantalones) {
 		for (int i = 0; i < pantalones.length; i++) {
-			for (int j = 0; j < pantalones.length-1; j++) {
-				int comparacion=pantalones[j].getColor().compareTo(pantalones[j+1].getColor());
-				if(comparacion<0) // De Z a A
-//				if(comparacion>0) // De A a Z
+			for (int j = 0; j < pantalones.length - 1; j++) {
+				int comparacion = pantalones[j].getColor().compareTo(pantalones[j + 1].getColor());
+//				if(comparacion<0) // De Z a A
+				if (comparacion > 0) // De A a Z
 				{
-					Pantalon temp=pantalones[j];
-					pantalones[j]=pantalones[j+1];
-					pantalones[j+1]=temp;
+					Pantalon temp = pantalones[j];
+					pantalones[j] = pantalones[j + 1];
+					pantalones[j + 1] = temp;
 				}
 			}
 		}
 	}
+
+	private static void ordenarPorMarca(Pantalon[] pantalones) {
+		for (int i = 0; i < pantalones.length; i++) {
+			for (int j = 0; j < pantalones.length-1; j++) {
+				if(pantalones[j]!=null && pantalones[j+1]!=null) {
+					int comparacion=pantalones[j].getMarca().toString().compareTo(pantalones[j+1].getMarca().toString());
+//				if(comparacion<0) // De Z a A
+					if(comparacion>0) // De A a Z
+					{
+					Pantalon temp=pantalones[j];
+					pantalones[j]=pantalones[j+1];
+					pantalones[j+1]=temp;
+				}
+		}
+			}
+
+	}}
+	private static void ordenarPorMarca2(Pantalon[] pantalones) {
+		for (int i = 0; i < pantalones.length; i++) {
+			for (int j = 0; j < pantalones.length-1; j++) {
+				if(pantalones[j]!=null && pantalones[j+1]!=null) {
+					int comparacion=pantalones[j].getMarca().compareTo(pantalones[j+1].getMarca());
+//				if(comparacion<0) // De Z a A
+					if(comparacion<0) // De A a Z
+					{
+						Pantalon temp=pantalones[j];
+						pantalones[j]=pantalones[j+1];
+						pantalones[j+1]=temp;
+					}
+				}
+			}
+			
+		}}
 
 	private static void ordenarPorTalle(Pantalon[] pantalones) {
 		for (int i = 0; i < pantalones.length; i++) {
@@ -100,5 +142,4 @@ public class PruebaJean {
 		return existeElPantalon;
 	}
 
-	
 }
